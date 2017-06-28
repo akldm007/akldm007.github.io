@@ -25,4 +25,4 @@ modify config.yaml:
 ### Visit ###
 https://**userid**.github.io/
 
-> Tips: 1. Some themes from [Jekyll Themes](http://jekyllthemes.org/) can't be used directly. Try it by clone it and run "jekyll serve" firsty
+> Tips: 1. Some themes from [Jekyll Themes](http://jekyllthemes.org/) can't be used directly. Try it by clone it and run "jekyll serve" firstyly
