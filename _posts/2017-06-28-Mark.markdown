@@ -3,7 +3,7 @@ layout: post
 title:  "How to build a github page"
 date:   2017-06-28 09:00:13
 categories: github
-permalink: /archivers/hi
+permalink: /archivers/2
 ---
 
 ## First you should have a github account ##
