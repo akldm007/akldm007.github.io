@@ -10,11 +10,9 @@ permalink: /archivers/hello
 run the following commond in your repository:
 > git config --global credential.helper store
 
-```ruby
 [credential]
     helper = store
 will be added to ~/.gitconfig automaticly
-```
 
 ## Generate .git-credential ##
 run: 
