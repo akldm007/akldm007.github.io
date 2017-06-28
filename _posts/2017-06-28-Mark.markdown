@@ -13,16 +13,16 @@ Just logon your github and create a new repository name as **userid**.github.io
 [Jekyll Themes](http://jekyllthemes.org/)
 
 ## Third clone the theme and commit to your repository ##
-git clone ...
-git remote add ...
-git push ...
+* git clone ...
+* git remote add ...
+* git push ...
 
 ### Configure ###
 modify config.yaml:
-> url: "http://**usrid**.github.io"
+> url: "http://**userid**.github.io"
 > baseurl: ""
 
 ### Visit ###
-https://**usrid**.github.io/
+https://**userid**.github.io/
 
 > Tips: 1. Some themes from [Jekyll Themes](http://jekyllthemes.org/) can't be used directly. Try it by clone it and run "jekyll serve" firsty
