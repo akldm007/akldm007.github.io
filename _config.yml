@@ -1,16 +1,16 @@
 # Site settings
-title: Another Blog
+title: SeanLi's Blog
 url: "http://akldm007.github.io"    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
 baseurl: "" # the prefix of your site uri, eg. `/jekyll-theme-EasyBook` or just one slash `/`
 #timezone: Asia/Chongqing
 description: >
-  One or more sentences introducing this blog.
+  If it doesn't Challenge you, it doesn't Change you
 
 # Your information
-email: your_email@example.com
-author: your_name
+email: sean.li02@sap.com
+author: SeanLi
 avatar: "//www.gravatar.com/avatar/your_email_md5?d=mm&s=135"
-profile: One sentence introducing yourself.
+profile: A knight
 #twitter_username: twitter_username
 #github_username:  github_username
 
