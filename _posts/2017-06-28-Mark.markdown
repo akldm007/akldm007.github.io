@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "How to build a github page"
+date:   2017-06-28 09:00:13
+categories: github
+permalink: /archivers/hello
+---
+
+## First you should have a github account ##
+Just logon your github and create a new repository name as <userid>.github.io
+
+## Second find a Jekyll Themes ##
+[Jekyll Themes](http://jekyllthemes.org/)
+
+## Third clone the theme and commit to your repository ##
+git clone ...
+git remote add ...
+git push ...
+
+### Configure ###
+modify config.yaml:
+> url: "http://<userid>.github.io"
+> baseurl: ""
+
+### Visit ###
+https://<userid>.github.io/
+
+> Tips: 1. Some themes from [Jekyll Themes](http://jekyllthemes.org/) can't be used directly. Try it by clone it and run "jekyll serve" firsty
