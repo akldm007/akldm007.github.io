@@ -13,13 +13,17 @@ run the following commond in your repository:
 
 [credential]
     helper = store
+
 will be added to ~/.gitconfig automaticly
 
 ## Generate .git-credential ##
 run: 
 > git push 
+
 input your user name and passwd
+
 https:{username}:{password}@github.com 
+
 will be added into ~/.git-credential automaticly
 
 ## Next time passwd is not needed when doing git push ##
