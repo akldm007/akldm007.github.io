@@ -2,8 +2,8 @@
 layout: post
 title:  "No passwd git pull"
 date:   2017-06-27 16:31:13
-categories: git
-permalink: /archivers/hello
+categories: github
+permalink: /archivers/1
 ---
 
 ## Generate .gitconfig file ##
