@@ -11,8 +11,9 @@ run the following commond in your repository:
 
 > git config --global credential.helper store
 
-[credential]
-    helper = store
+>[credential]
+
+>    helper = store
 
 will be added to ~/.gitconfig automaticly
 
@@ -22,7 +23,7 @@ run:
 
 input your user name and passwd
 
-https:{username}:{password}@github.com 
+> https:{username}:{password}@github.com 
 
 will be added into ~/.git-credential automaticly
 
