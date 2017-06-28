@@ -7,7 +7,7 @@ permalink: /archivers/hello
 ---
 
 ## First you should have a github account ##
-Just logon your github and create a new repository name as **userid**.github.io
+Just logon your github and create a new repository name as *userid*.github.io
 
 ## Second find a Jekyll Themes ##
 [Jekyll Themes](http://jekyllthemes.org/)
@@ -19,10 +19,10 @@ Just logon your github and create a new repository name as **userid**.github.io
 
 ### Configure ###
 modify config.yaml:
-> url: "http://**userid**.github.io"
+> url: "http://*userid*.github.io"
 > baseurl: ""
 
 ### Visit ###
-https://**userid**.github.io/
+https://*userid*.github.io/
 
 > Tips: 1. Some themes from [Jekyll Themes](http://jekyllthemes.org/) can't be used directly. Try it by clone it and run "jekyll serve" firstyly
