@@ -7,10 +7,17 @@ permalink: /archivers/4
 ---
 
 如果你忘记了设置Django的Admin密码，那么你可以使用
+
 > createsuperuser
+
 来甚至密码，但是如果你忘记了Admin的密码的话，那么就要用Django shell：
+
 > python manage.py shell
+
 然后获取你的用户名，并且重设密码：
+
 > from django.contrib.auth.models import User
+
 > user =User.objects.get(username='admin')
+
 > user.set_password('new_password')
