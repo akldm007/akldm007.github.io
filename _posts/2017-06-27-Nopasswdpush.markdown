@@ -2,7 +2,7 @@
 layout: post
 title:  "No passwd git pull"
 date:   2017-06-27 16:31:13
-categories: github
+categories: Github
 permalink: /archivers/1
 ---
 

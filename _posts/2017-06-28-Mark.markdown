@@ -2,7 +2,7 @@
 layout: post
 title:  "How to build a github page"
 date:   2017-06-28 09:00:13
-categories: github
+categories: Github
 permalink: /archivers/2
 ---
 
