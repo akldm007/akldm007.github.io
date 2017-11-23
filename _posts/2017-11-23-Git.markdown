@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "git add与ignore"
+date:   2017-11-23 16:50:13
+categories: Git
+permalink: /archivers/7
+---
+
+执行git add *时，如果有modified的文件在.ignore中则会遇到：
+> The following paths are ignored by one of your .gitignore files:
+
+> filename
+
+> Use -f if you really want to add them
+
+> fatal:no files add
+
+git add会失败
+
+solution:
+git add \\*
+
+原理：
+* git add *是进行的shell 展开glob
+* 运行git add \*，\*由git展开
+* git add 遇到由git展开glob(不是由shell展开)形成的要被忽略的文件，此文件不会被加入到index
