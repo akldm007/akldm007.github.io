@@ -22,5 +22,5 @@ git add \\*
 
 原理：
 * git add *是进行的shell 展开glob
-* 运行git add \*，\*由git展开
+* 运行git add \\*，\\*由git展开
 * git add 遇到由git展开glob(不是由shell展开)形成的要被忽略的文件，此文件不会被加入到index
