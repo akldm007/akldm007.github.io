@@ -1,27 +1,239 @@
 ---
 layout: default
-title: Category
+title: Categories
 permalink: /category/
 public: true
 ---
 
 <div class="home">
-  <h1 class="page-heading">Category</h1>
+  <h1 class="page-heading">Categories</h1>
 
-  <ul class="post-list">
+  <div class="category-description">
+    <p>Browse posts by category. Each post may belong to multiple categories.</p>
+  </div>
 
-{% capture categories %}{% for category in site.categories %}{{ category | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-{% assign category = categories | split:',' | sort %}
-{% for item in (0..site.categories.size) %}{% unless forloop.last %}
-{% capture word %}{{ category[item] | strip_newlines }}{% endcapture %}
-<h2 class="category" id="{{ word }}">{{ word | upcase }}</h2>
-<ul>
-{% for post in site.categories[word] %}{% if post.title != null %}
-<li><span>{{ post.date | date: "%b %d" }}</span> » <a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
-{% endif %}{% endfor %}
-</ul>
-{% endunless %}{% endfor %}
-
-  </ul>
+  <div class="post-list">
+    {% assign categories_list = site.categories | sort %}
+    {% for category in categories_list %}
+      {% assign category_name = category[0] %}
+      {% assign posts = category[1] %}
+      
+      <div class="category-section">
+        <h2 class="category-title" id="{{ category_name | slugify }}">
+          {{ category_name | capitalize }}
+          <span class="post-count">({{ posts | size }})</span>
+        </h2>
+        
+        <ul class="category-posts">
+          {% for post in posts %}
+            {% if post.title != null %}
+              <li class="category-post-item">
+                <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                <a href="{{ site.baseurl }}{{ post.url }}" class="post-link">{{ post.title }}</a>
+                {% if post.categories.size > 1 %}
+                  <span class="post-tags">
+                    {% for cat in post.categories %}
+                      {% if cat != category_name %}
+                        <span class="tag">{{ cat }}</span>
+                      {% endif %}
+                    {% endfor %}
+                  </span>
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
   
 </div>
+
+<style>
+  .category-description {
+    margin-bottom: 2rem;
+    padding: 1rem 1.5rem;
+    background: var(--bg-tertiary, #f3f4f6);
+    border-radius: 8px;
+    color: var(--text-secondary, #6b7280);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .category-description {
+      background: var(--dark-bg-tertiary, #334155);
+      color: var(--dark-text-secondary, #cbd5e1);
+    }
+  }
+  
+  body.dark-mode .category-description {
+    background: var(--dark-bg-tertiary, #334155);
+    color: var(--dark-text-secondary, #cbd5e1);
+  }
+  
+  .category-section {
+    margin-bottom: 3rem;
+  }
+  
+  .category-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary-color, #6366f1);
+    color: var(--text-primary, #1f2937);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .category-title {
+      color: var(--dark-text-primary, #f1f5f9);
+      border-bottom-color: var(--accent-color, #8b5cf6);
+    }
+  }
+  
+  body.dark-mode .category-title {
+    color: var(--dark-text-primary, #f1f5f9);
+    border-bottom-color: var(--accent-color, #8b5cf6);
+  }
+  
+  .post-count {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-tertiary, #9ca3af);
+    background: var(--bg-tertiary, #f3f4f6);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .post-count {
+      color: var(--dark-text-secondary, #cbd5e1);
+      background: var(--dark-bg-tertiary, #334155);
+    }
+  }
+  
+  body.dark-mode .post-count {
+    color: var(--dark-text-secondary, #cbd5e1);
+    background: var(--dark-bg-tertiary, #334155);
+  }
+  
+  .category-posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .category-post-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .category-post-item {
+      border-bottom-color: var(--dark-border-color, #334155);
+    }
+  }
+  
+  body.dark-mode .category-post-item {
+    border-bottom-color: var(--dark-border-color, #334155);
+  }
+  
+  .category-post-item:last-child {
+    border-bottom: none;
+  }
+  
+  .post-date {
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    color: var(--text-tertiary, #9ca3af);
+    font-weight: 500;
+    min-width: 100px;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .post-date {
+      color: var(--dark-text-secondary, #cbd5e1);
+    }
+  }
+  
+  body.dark-mode .post-date {
+    color: var(--dark-text-secondary, #cbd5e1);
+  }
+  
+  .post-link {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text-primary, #1f2937);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .post-link {
+      color: var(--dark-text-primary, #f1f5f9);
+    }
+  }
+  
+  body.dark-mode .post-link {
+    color: var(--dark-text-primary, #f1f5f9);
+  }
+  
+  .post-link:hover {
+    color: var(--primary-color, #6366f1);
+    text-decoration: underline;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .post-link:hover {
+      color: var(--accent-color, #8b5cf6);
+    }
+  }
+  
+  body.dark-mode .post-link:hover {
+    color: var(--accent-color, #8b5cf6);
+  }
+  
+  .post-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--bg-tertiary, #f3f4f6);
+    color: var(--text-secondary, #6b7280);
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .tag {
+      background: var(--dark-bg-tertiary, #334155);
+      color: var(--dark-text-secondary, #cbd5e1);
+    }
+  }
+  
+  body.dark-mode .tag {
+    background: var(--dark-bg-tertiary, #334155);
+    color: var(--dark-text-secondary, #cbd5e1);
+  }
+  
+  @media (max-width: 768px) {
+    .category-post-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .post-date {
+      min-width: auto;
+    }
+  }
+</style>
