@@ -9,23 +9,50 @@ public: true
   <h1 class="page-heading">Categories</h1>
 
   <div class="category-description">
-    <p>Browse posts by category. Each post may belong to multiple categories.</p>
+    <p>Browse posts by category: Work-related technical content or Life experiences and stories.</p>
   </div>
 
   <div class="post-list">
-    {% assign categories_list = site.categories | sort %}
-    {% for category in categories_list %}
-      {% assign category_name = category[0] %}
-      {% assign posts = category[1] %}
+    <!-- Work Category -->
+    <div class="category-section">
+      <h2 class="category-title" id="work">
+        💼 Work
+        <span class="post-count">({% assign work_count = 0 %}{% for post in site.posts %}{% if post.categories contains 'work' %}{% assign work_count = work_count | plus: 1 %}{% endif %}{% endfor %}{{ work_count }})</span>
+      </h2>
       
-      <div class="category-section">
-        <h2 class="category-title" id="{{ category_name | slugify }}">
-          {{ category_name | capitalize }}
-          <span class="post-count">({{ posts | size }})</span>
-        </h2>
-        
-        <ul class="category-posts">
-          {% for post in posts %}
+      <ul class="category-posts">
+        {% assign work_posts = site.posts | where_exp: "post", "post.categories contains 'work'" | sort: 'date' | reverse %}
+        {% for post in work_posts %}
+          {% if post.title != null %}
+            <li class="category-post-item">
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+              <a href="{{ site.baseurl }}{{ post.url }}" class="post-link">{{ post.title }}</a>
+              {% if post.categories.size > 1 %}
+                <span class="post-tags">
+                  {% for cat in post.categories %}
+                    {% if cat != 'work' %}
+                      <span class="tag">{{ cat }}</span>
+                    {% endif %}
+                  {% endfor %}
+                </span>
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Life Category -->
+    <div class="category-section">
+      <h2 class="category-title" id="life">
+        🌟 Life
+        <span class="post-count">({% assign life_count = 0 %}{% for post in site.posts %}{% if post.categories contains 'life' %}{% assign life_count = life_count | plus: 1 %}{% endif %}{% endfor %}{{ life_count }})</span>
+      </h2>
+      
+      <ul class="category-posts">
+        {% assign life_posts = site.posts | where_exp: "post", "post.categories contains 'life'" | sort: 'date' | reverse %}
+        {% if life_posts.size > 0 %}
+          {% for post in life_posts %}
             {% if post.title != null %}
               <li class="category-post-item">
                 <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
@@ -33,7 +60,7 @@ public: true
                 {% if post.categories.size > 1 %}
                   <span class="post-tags">
                     {% for cat in post.categories %}
-                      {% if cat != category_name %}
+                      {% if cat != 'life' %}
                         <span class="tag">{{ cat }}</span>
                       {% endif %}
                     {% endfor %}
@@ -42,9 +69,14 @@ public: true
               </li>
             {% endif %}
           {% endfor %}
-        </ul>
-      </div>
-    {% endfor %}
+        {% else %}
+          <li class="empty-category">
+            <p>No life posts yet. Start sharing your personal experiences and stories!</p>
+            <p>Use the template at <code>_posts/2025-01-27-life-template.markdown</code> to create your first life post.</p>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
   </div>
   
 </div>
@@ -223,6 +255,47 @@ public: true
   body.dark-mode .tag {
     background: var(--dark-bg-tertiary, #334155);
     color: var(--dark-text-secondary, #cbd5e1);
+  }
+  
+  .empty-category {
+    padding: 2rem;
+    background: var(--bg-tertiary, #f3f4f6);
+    border-radius: 8px;
+    text-align: center;
+    color: var(--text-secondary, #6b7280);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .empty-category {
+      background: var(--dark-bg-tertiary, #334155);
+      color: var(--dark-text-secondary, #cbd5e1);
+    }
+  }
+  
+  body.dark-mode .empty-category {
+    background: var(--dark-bg-tertiary, #334155);
+    color: var(--dark-text-secondary, #cbd5e1);
+  }
+  
+  .empty-category p {
+    margin: 0.5rem 0;
+  }
+  
+  .empty-category code {
+    background: var(--bg-primary, #ffffff);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .empty-category code {
+      background: var(--dark-bg-secondary, #1e293b);
+    }
+  }
+  
+  body.dark-mode .empty-category code {
+    background: var(--dark-bg-secondary, #1e293b);
   }
   
   @media (max-width: 768px) {
