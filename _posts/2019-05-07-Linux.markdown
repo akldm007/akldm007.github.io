@@ -2,7 +2,7 @@
 layout: post
 title:  "sudo keep proxy env"
 date:   2019-05-07 11:30:13
-categories: Linux
+categories: [work, Linux]
 permalink: /archivers/8
 ---
 

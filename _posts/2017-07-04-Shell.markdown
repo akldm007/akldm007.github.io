@@ -2,7 +2,7 @@
 layout: post
 title:  "Unix 文件解压命令大全"
 date:   2017-07-04 14:40:13
-categories: Shell
+categories: [work, Shell]
 permalink: /archivers/6
 ---
 
@@ -16,4 +16,4 @@ permalink: /archivers/6
 * 6、*.Z 用 uncompress 解压 
 * 7、*.tar.Z 用tar –xZf 解压 
 * 8、*.rar 用 unrar e解压 
-* 9、*.zip 用 unzip 解压 
+* 9、*.zip 用 unzip 解压

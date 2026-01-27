@@ -2,7 +2,7 @@
 layout: post
 title:  "Django Tips"
 date:   2017-06-28 18:07:13
-categories: Django
+categories: [work, Django]
 permalink: /archivers/5
 ---
 
