@@ -1,12 +1,7 @@
-remote_theme: pages-themes/primer
-plugins:
-  - jekyll-remote-theme
-
 # Site settings
 title: SeanLi's Blog
-url: "http://akldm007.github.io"    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
-baseurl: "" # the prefix of your site uri, eg. `/jekyll-theme-EasyBook` or just one slash `/`
-#timezone: Asia/Chongqing
+url: "http://akldm007.github.io"
+baseurl: ""
 description: >
   If it doesn't Challenge you, it doesn't Change you
 
@@ -15,22 +10,16 @@ email: sean.li02@sap.com
 author: SeanLi
 avatar: "/pic/jm.jpg"
 profile: A knight
-#twitter_username: twitter_username
-github_username:  akldm007
+github_username: akldm007
 
-# Comment Service (Disqus or 多说)
-#  choose one and un-comment the line to active it
-#disqus_shortname: xxx   # get one: https://disqus.com/admin/signup/
-#duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
-
+# Build settings
 permalink: /archivers/:title
-gems:
+plugins:
  - jekyll-paginate
  - jekyll-gist
  - jemoji
 
-# Build settings
-paginate: 5
+paginate: 6
 paginate_path: "page:num"
 
 highlighter: rouge
@@ -39,3 +28,6 @@ markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false

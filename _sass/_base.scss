@@ -1,74 +1,306 @@
+// Modern Base Styles - 2025
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
 	font-family: $base-font-family;
 	font-size: $base-font-size;
 	line-height: $base-line-height;
+	color: $text-primary;
+	background-color: $bg-secondary;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition: $transition-base;
 }
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: $dark-bg-primary;
+		color: $dark-text-primary;
+	}
+}
+
+body.dark-mode {
+	background-color: $dark-bg-primary;
+	color: $dark-text-primary;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+	font-family: $heading-font-family;
+	font-weight: 700;
+	line-height: 1.3;
+	margin-bottom: 1rem;
+	color: $text-primary;
+	letter-spacing: -0.02em;
+	
+	@media (prefers-color-scheme: dark) {
+		color: $dark-text-primary;
+	}
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+	color: $dark-text-primary;
+}
+
+h1 { 
+	font-size: 2.5rem; 
+	margin-bottom: 1.5rem;
+	
+	@include media-query($on-palm) {
+		font-size: 2rem;
+	}
+}
+
+h2 { 
+	font-size: 2rem; 
+	margin-top: 2rem;
+	
+	@include media-query($on-palm) {
+		font-size: 1.75rem;
+	}
+}
+
+h3 { 
+	font-size: 1.5rem; 
+	margin-top: 1.5rem;
+}
+
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+p {
+	margin-bottom: 1.5rem;
+	color: $text-secondary;
+	
+	@media (prefers-color-scheme: dark) {
+		color: $dark-text-secondary;
+	}
+}
+
+body.dark-mode p {
+	color: $dark-text-secondary;
+}
+
 a {
 	text-decoration: none;
-	color: #036;
+	color: $primary-color;
+	transition: $transition-fast;
+	font-weight: 500;
+	
+	&:hover, &:focus {
+		color: $primary-hover;
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 3px;
+	}
 }
-a:hover, a:focus {
-	text-decoration:underline;
-	color: #069;
-}
+
+// Modern blockquote
 blockquote {
-	background: #FFF;
-	margin:0;
-	padding: 5px 20px;
-	border-left: 10px solid #CCC;
+	background: $bg-tertiary;
+	margin: 2rem 0;
+	padding: 1.5rem 2rem;
+	border-left: 4px solid $primary-color;
+	border-radius: $radius-md;
+	font-style: italic;
+	color: $text-secondary;
+	box-shadow: $shadow-sm;
+	
+	@media (prefers-color-scheme: dark) {
+		background: $dark-bg-secondary;
+		color: $dark-text-secondary;
+		border-left-color: $accent-color;
+	}
+	
+	p:last-child {
+		margin-bottom: 0;
+	}
 }
-code,pre {
-	font-family:  $code-font-family;
+
+body.dark-mode blockquote {
+	background: $dark-bg-secondary;
+	color: $dark-text-secondary;
+	border-left-color: $accent-color;
+}
+
+// Modern code styling
+code, pre {
+	font-family: $code-font-family;
 	font-size: $code-font-size;
+	font-feature-settings: "liga" 1, "calt" 1;
 }
+
 code {
-	color: #900;
-	background-color: #fff;
-	padding: 2px 5px;
-	border-radius: 5px;
+	color: $primary-color;
+	background-color: $bg-tertiary;
+	padding: 0.25rem 0.5rem;
+	border-radius: $radius-sm;
+	font-weight: 500;
+	
+	@media (prefers-color-scheme: dark) {
+		background-color: $dark-bg-tertiary;
+		color: $accent-color;
+	}
 }
+
+body.dark-mode code {
+	background-color: $dark-bg-tertiary;
+	color: $accent-color;
+}
+
 pre {
 	overflow-x: auto;
-	padding: 20px 50px;
+	padding: 1.5rem;
+	margin: 2rem 0;
+	background-color: $code-bg;
+	border-radius: $radius-lg;
+	box-shadow: $shadow-lg;
+	line-height: 1.6;
+	
+	code {
+		color: $code-text;
+		background-color: transparent;
+		padding: 0;
+		font-weight: 400;
+	}
 }
-pre, pre code {
-	color: #fafafa;
-	background-color: #223;
-}
-pre code {
-	padding: 0;	
-}
+
+// Utility classes
 .hide {
-    display: none;
+	display: none;
 }
+
 .center {
 	text-align: center;
 }
+
+// Modern table styling
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-    margin: 10pt auto;
-	background: #FFF;
+	margin: 2rem auto;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	border-radius: $radius-md;
+	box-shadow: $shadow-md;
+	background: $bg-primary;
+	
+	@media (prefers-color-scheme: dark) {
+		background: $dark-bg-secondary;
+	}
 
 	td, th {
-		border: 1px solid #CCC;
-		padding: 5px 15px;
-		margin: 0;
+		border: 1px solid $border-color;
+		padding: 1rem 1.5rem;
+		text-align: left;
+		
+		@media (prefers-color-scheme: dark) {
+			border-color: $dark-border-color;
+		}
 	}
 	
 	th {
-		border-color: #555;
-		background: #555;
-		color: #eee;
-		font-weight:normal;
+		background: $primary-color;
+		color: white;
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: $small-font-size;
+		letter-spacing: 0.05em;
 	}
 	
-	tr:hover {
-		background: rgba(255,255,0,0.2);
+	tbody tr {
+		transition: $transition-fast;
+		
+		&:hover {
+			background: $bg-tertiary;
+			
+			@media (prefers-color-scheme: dark) {
+				background: $dark-bg-tertiary;
+			}
+		}
+		
+		&:nth-child(even) {
+			background: $bg-secondary;
+			
+			@media (prefers-color-scheme: dark) {
+				background: rgba(255, 255, 255, 0.02);
+			}
+		}
 	}
 }
 
-h1,h2,h3,h4,h5,h6{
-	font-weight: normal;
+body.dark-mode table {
+	background: $dark-bg-secondary;
+	
+	td, th {
+		border-color: $dark-border-color;
+	}
+	
+	tbody tr:hover {
+		background: $dark-bg-tertiary;
+	}
+	
+	tbody tr:nth-child(even) {
+		background: rgba(255, 255, 255, 0.02);
+	}
+}
+
+// Images
+img {
+	max-width: 100%;
+	height: auto;
+	border-radius: $radius-md;
+	box-shadow: $shadow-sm;
+}
+
+// Lists
+ul, ol {
+	margin-bottom: 1.5rem;
+	padding-left: 2rem;
+	
+	li {
+		margin-bottom: 0.5rem;
+		color: $text-secondary;
+		
+		@media (prefers-color-scheme: dark) {
+			color: $dark-text-secondary;
+		}
+	}
+}
+
+body.dark-mode ul li,
+body.dark-mode ol li {
+	color: $dark-text-secondary;
+}
+
+// Horizontal rule
+hr {
+	border: none;
+	border-top: 2px solid $border-color;
+	margin: 3rem 0;
+	
+	@media (prefers-color-scheme: dark) {
+		border-top-color: $dark-border-color;
+	}
+}
+
+body.dark-mode hr {
+	border-top-color: $dark-border-color;
 }

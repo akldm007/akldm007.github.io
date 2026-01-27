@@ -1,57 +1,508 @@
+// Modern Post Page Styles - 2025
+
 .post {
-    .post-header {
-    	margin: 0 100px;
-    	margin-bottom: 40px;
-    	padding: 20px;
-        .post-title {
-        	font-size:40px;
-        	font-weight: normal;
-        	margin: 0 -100px;
-        	@include media-query($on-palm) {
-        		font-size: 34px;
-        	}
-        }
-        .post-meta {
-        	color:#999;
-        	font-size:$small-font-size;
-        	margin: 0 -100px;
-        }
-        @include media-query($on-palm) {
-    		text-align:center;
-    		margin-bottom: 10px;
-    		padding: 10px;
-        }
-    }
-    .post-content {
-        color: #333;
-        
-        h1,h2,h3,h4,h5,h6 {
-            color: #000;
-        }
-        
-        h1, h2 {
-        	margin-bottom: 10px;
-            margin-top: 30px;
-        }
-        
-        h1, h2, h3 {
-            border-bottom: 1px solid #CCC;
-        }
-        
-        pre {
-        	margin: 0 -30px;
-            @include media-query($on-palm) {
-		        margin: 0 -10px;
-            }
-        }
-        
-        .middle-image {
-            display: block;
-            margin-left: auto;
-            margin-right: auto
-        }
-    }
-    .post-comments {
-        padding-top: 30px;
-    }
+	.post-header {
+		margin-bottom: 3rem;
+		padding-bottom: 2rem;
+		border-bottom: 2px solid $border-color;
+		
+		@media (prefers-color-scheme: dark) {
+			border-bottom-color: $dark-border-color;
+		}
+		
+		@include media-query($on-palm) {
+			margin-bottom: 2rem;
+			padding-bottom: 1.5rem;
+		}
+	}
+	
+	.post-title {
+		font-size: 2.75rem;
+		font-weight: 800;
+		line-height: 1.2;
+		margin-bottom: 1.5rem;
+		background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		letter-spacing: -0.03em;
+		
+		@include media-query($on-laptop) {
+			font-size: 2.25rem;
+		}
+		
+		@include media-query($on-palm) {
+			font-size: 1.875rem;
+		}
+	}
+	
+	.post-meta {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		font-size: $small-font-size;
+		color: $text-tertiary;
+		
+		@media (prefers-color-scheme: dark) {
+			color: $dark-text-secondary;
+		}
+		
+		@include media-query($on-palm) {
+			gap: 1rem;
+		}
+		
+		.post-date,
+		.post-author,
+		.post-categories {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.5rem 1rem;
+			background: $bg-tertiary;
+			border-radius: $radius-md;
+			transition: $transition-fast;
+			
+			@media (prefers-color-scheme: dark) {
+				background: $dark-bg-tertiary;
+			}
+			
+			&:hover {
+				background: $primary-color;
+				color: white;
+				transform: translateY(-2px);
+				
+				@media (prefers-color-scheme: dark) {
+					background: $accent-color;
+				}
+			}
+		}
+		
+		.post-date::before {
+			content: "📅";
+		}
+		
+		.post-author::before {
+			content: "✍️";
+		}
+		
+		.post-categories::before {
+			content: "🏷️";
+		}
+	}
+	
+	.post-content {
+		font-size: 1.05rem;
+		line-height: 1.8;
+		
+		@include media-query($on-palm) {
+			font-size: 1rem;
+		}
+		
+		// Better spacing for content elements
+		> * + * {
+			margin-top: 1.5rem;
+		}
+		
+		> h2 + *,
+		> h3 + * {
+			margin-top: 1rem;
+		}
+		
+		// Enhanced headings in posts
+		h2, h3, h4, h5, h6 {
+			scroll-margin-top: 100px;
+			position: relative;
+			
+			&:hover .header-link {
+				opacity: 1;
+			}
+		}
+		
+		h2 {
+			padding-top: 2rem;
+			margin-top: 3rem;
+			border-top: 1px solid $border-color;
+			
+			@media (prefers-color-scheme: dark) {
+				border-top-color: $dark-border-color;
+			}
+			
+			&:first-child {
+				border-top: none;
+				margin-top: 0;
+				padding-top: 0;
+			}
+		}
+		
+		// Enhanced links in content
+		a:not(.post-link) {
+			color: $primary-color;
+			border-bottom: 2px solid transparent;
+			transition: $transition-fast;
+			
+			&:hover {
+				border-bottom-color: $primary-color;
+				text-decoration: none;
+				
+				@media (prefers-color-scheme: dark) {
+					border-bottom-color: $accent-color;
+				}
+			}
+		}
+		
+		// Better image handling
+		img {
+			display: block;
+			margin: 2rem auto;
+			max-width: 100%;
+			height: auto;
+			border-radius: $radius-lg;
+			box-shadow: $shadow-lg;
+			transition: $transition-base;
+			
+			&:hover {
+				transform: scale(1.02);
+				box-shadow: $shadow-xl;
+			}
+		}
+		
+		// Enhanced lists
+		ul, ol {
+			padding-left: 2rem;
+			
+			li {
+				padding-left: 0.5rem;
+				margin-bottom: 0.75rem;
+				
+				&::marker {
+					color: $primary-color;
+					font-weight: 700;
+					
+					@media (prefers-color-scheme: dark) {
+						color: $accent-color;
+					}
+				}
+			}
+			
+			ul, ol {
+				margin-top: 0.75rem;
+			}
+		}
+		
+		// Task lists
+		ul.task-list {
+			list-style: none;
+			padding-left: 0;
+			
+			li {
+				display: flex;
+				align-items: flex-start;
+				gap: 0.75rem;
+				
+				input[type="checkbox"] {
+					margin-top: 0.35rem;
+					width: 1.25rem;
+					height: 1.25rem;
+					cursor: pointer;
+					accent-color: $primary-color;
+				}
+			}
+		}
+		
+		// Enhanced blockquotes
+		blockquote {
+			position: relative;
+			
+			&::before {
+				content: '"';
+				position: absolute;
+				top: -0.5rem;
+				left: 1rem;
+				font-size: 4rem;
+				color: $primary-color;
+				opacity: 0.2;
+				font-family: Georgia, serif;
+				
+				@media (prefers-color-scheme: dark) {
+					color: $accent-color;
+				}
+			}
+		}
+		
+		// Inline code in content
+		code {
+			font-size: 0.9em;
+		}
+		
+		// Code blocks
+		pre {
+			position: relative;
+			
+			&::before {
+				content: attr(data-lang);
+				position: absolute;
+				top: 0.75rem;
+				right: 1rem;
+				padding: 0.25rem 0.75rem;
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: $radius-sm;
+				font-size: 0.75rem;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: rgba(255, 255, 255, 0.6);
+			}
+		}
+		
+		// Tables in posts
+		table {
+			font-size: 0.95rem;
+			
+			@include media-query($on-palm) {
+				font-size: 0.85rem;
+			}
+		}
+		
+		// Footnotes
+		.footnotes {
+			margin-top: 4rem;
+			padding-top: 2rem;
+			border-top: 2px solid $border-color;
+			font-size: $small-font-size;
+			
+			@media (prefers-color-scheme: dark) {
+				border-top-color: $dark-border-color;
+			}
+			
+			ol {
+				padding-left: 1.5rem;
+			}
+		}
+	}
+	
+	// Post navigation
+	.post-nav {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 2px solid $border-color;
+		
+		@media (prefers-color-scheme: dark) {
+			border-top-color: $dark-border-color;
+		}
+		
+		@include media-query($on-palm) {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+		
+		a {
+			display: block;
+			padding: 1.5rem;
+			background: $bg-tertiary;
+			border-radius: $radius-lg;
+			border: 1px solid $border-color;
+			transition: $transition-base;
+			
+			@media (prefers-color-scheme: dark) {
+				background: $dark-bg-tertiary;
+				border-color: $dark-border-color;
+			}
+			
+			&:hover {
+				transform: translateY(-4px);
+				box-shadow: $shadow-lg;
+				border-color: $primary-color;
+				text-decoration: none;
+				
+				@media (prefers-color-scheme: dark) {
+					border-color: $accent-color;
+				}
+			}
+			
+			.nav-label {
+				display: block;
+				font-size: $small-font-size;
+				color: $text-tertiary;
+				margin-bottom: 0.5rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				
+				@media (prefers-color-scheme: dark) {
+					color: $dark-text-secondary;
+				}
+			}
+			
+			.nav-title {
+				color: $text-primary;
+				font-weight: 600;
+				
+				@media (prefers-color-scheme: dark) {
+					color: $dark-text-primary;
+				}
+			}
+			
+			&.prev .nav-label::before {
+				content: "← ";
+			}
+			
+			&.next {
+				text-align: right;
+				
+				.nav-label::after {
+					content: " →";
+				}
+			}
+		}
+	}
+	
+	// Comments section
+	.post-comments {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 2px solid $border-color;
+		
+		@media (prefers-color-scheme: dark) {
+			border-top-color: $dark-border-color;
+		}
+		
+		h3 {
+			margin-bottom: 2rem;
+		}
+	}
+	
+	// Share buttons
+	.post-share {
+		display: flex;
+		gap: 1rem;
+		margin-top: 3rem;
+		padding: 1.5rem;
+		background: $bg-tertiary;
+		border-radius: $radius-lg;
+		
+		@media (prefers-color-scheme: dark) {
+			background: $dark-bg-tertiary;
+		}
+		
+		@include media-query($on-palm) {
+			flex-wrap: wrap;
+		}
+		
+		.share-label {
+			font-weight: 600;
+			color: $text-primary;
+			margin-right: auto;
+			
+			@media (prefers-color-scheme: dark) {
+				color: $dark-text-primary;
+			}
+		}
+		
+		a {
+			padding: 0.5rem 1rem;
+			border-radius: $radius-md;
+			background: $bg-primary;
+			color: $text-secondary;
+			font-size: $small-font-size;
+			font-weight: 600;
+			transition: $transition-fast;
+			
+			@media (prefers-color-scheme: dark) {
+				background: $dark-bg-secondary;
+				color: $dark-text-secondary;
+			}
+			
+			&:hover {
+				background: $primary-color;
+				color: white;
+				transform: translateY(-2px);
+				box-shadow: $shadow-md;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+body.dark-mode .post {
+	.post-header {
+		border-bottom-color: $dark-border-color;
+	}
+	
+	.post-meta {
+		color: $dark-text-secondary;
+		
+		.post-date,
+		.post-author,
+		.post-categories {
+			background: $dark-bg-tertiary;
+			
+			&:hover {
+				background: $accent-color;
+			}
+		}
+	}
+	
+	.post-content {
+		h2 {
+			border-top-color: $dark-border-color;
+		}
+		
+		a:not(.post-link):hover {
+			border-bottom-color: $accent-color;
+		}
+		
+		ul li::marker,
+		ol li::marker {
+			color: $accent-color;
+		}
+		
+		blockquote::before {
+			color: $accent-color;
+		}
+		
+		.footnotes {
+			border-top-color: $dark-border-color;
+		}
+	}
+	
+	.post-nav {
+		border-top-color: $dark-border-color;
+		
+		a {
+			background: $dark-bg-tertiary;
+			border-color: $dark-border-color;
+			
+			&:hover {
+				border-color: $accent-color;
+			}
+			
+			.nav-label {
+				color: $dark-text-secondary;
+			}
+			
+			.nav-title {
+				color: $dark-text-primary;
+			}
+		}
+	}
+	
+	.post-comments {
+		border-top-color: $dark-border-color;
+	}
+	
+	.post-share {
+		background: $dark-bg-tertiary;
+		
+		.share-label {
+			color: $dark-text-primary;
+		}
+		
+		a {
+			background: $dark-bg-secondary;
+			color: $dark-text-secondary;
+		}
+	}
 }

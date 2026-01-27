@@ -3,27 +3,61 @@
 ---
 @charset "utf-8";
 
-$base-font-family: "Open Sans", "Helvetica Neue", "DejaVu Sans", Arial, "PingFang SC", "Noto Sans CJK SC", "Hiragino Sans GB", "微软雅黑",  Helvetica, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+// Modern 2025 Color Scheme - Dark Mode Ready
+$primary-color: #6366f1;
+$primary-hover: #4f46e5;
+$accent-color: #8b5cf6;
+$text-primary: #1f2937;
+$text-secondary: #6b7280;
+$text-tertiary: #9ca3af;
+$bg-primary: #ffffff;
+$bg-secondary: #f9fafb;
+$bg-tertiary: #f3f4f6;
+$border-color: #e5e7eb;
+$code-bg: #1e293b;
+$code-text: #e2e8f0;
 
-$code-font-family:   Menlo, Monaco, Consolas, "DejaVu Sans Mono", "Liberation Mono", "文泉驿等宽微米黑", "Courier New", Courier, SimSun, monospace;
-$code-font-size:     15px;
+// Dark mode colors
+$dark-bg-primary: #0f172a;
+$dark-bg-secondary: #1e293b;
+$dark-bg-tertiary: #334155;
+$dark-text-primary: #f1f5f9;
+$dark-text-secondary: #cbd5e1;
+$dark-border-color: #334155;
 
-// Width of the content area
-$content-width:    800px;
+// Modern Typography - 2025 Trends
+$base-font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Noto Sans CJK SC", "Hiragino Sans GB", "微软雅黑", Arial, sans-serif;
+$heading-font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+$base-font-size: 17px;
+$small-font-size: 14px;
+$base-line-height: 1.7;
 
-$on-palm:          600px;
-$on-laptop:        800px;
+$code-font-family: "JetBrains Mono", "Fira Code", "SF Mono", Monaco, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+$code-font-size: 15px;
 
-$color-link: #036;
-$color-link-hover: #069;
+// Layout
+$content-width: 1200px;
+$on-palm: 768px;
+$on-laptop: 1024px;
 
-$header-bg: #607D8B;
-$header-bg-hover: #78909C;
-$header-link: #CFD8DC;
-$header-fg: #FFF;
+// Spacing
+$spacing-unit: 16px;
+
+// Transitions
+$transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Border radius
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
 
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
@@ -31,12 +65,10 @@ $header-fg: #FFF;
     }
 }
 
-
-
-// Import partials from `sass_dir` (defaults to `_sass`)
+// Import partials
 @import
-        "base",
-        "layout",
-        "syntax-highlighting",
-        "easybook"
+    "base",
+    "layout",
+    "syntax-highlighting",
+    "easybook"
 ;

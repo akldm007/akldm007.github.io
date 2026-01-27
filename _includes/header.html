@@ -1,12 +1,90 @@
 <header class="header">
   <div class="wrapper">
     <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    
     <nav class="site-nav">
-      {% for page in site.pages %}
-        {% if page.title and page.public %}
-        <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-        {% endif %}
-      {% endfor %}
+      <a href="{{ site.baseurl }}/">Home</a>
+      <a href="{{ site.baseurl }}/category.html">Categories</a>
+      <a href="{{ site.baseurl }}/about.html">About</a>
+      
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
     </nav>
   </div>
 </header>
+
+<script>
+  // Dark mode toggle functionality
+  function toggleTheme() {
+    const body = document.body;
+    const currentTheme = localStorage.getItem('theme');
+    
+    if (currentTheme === 'dark') {
+      body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+  
+  // Check for saved theme preference or default to system preference
+  (function() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.body.classList.add('dark-mode');
+    }
+  })();
+</script>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .theme-icon {
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  
+  .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  
+  .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+  }
+  
+  body.dark-mode .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+  
+  body.dark-mode .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+</style>
