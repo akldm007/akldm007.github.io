@@ -1,8 +1,8 @@
 ---
-layout: page
+layout: single
 title: About
 permalink: /about/
-public: true
+author_profile: true
 ---
 
 Welcome to this website!

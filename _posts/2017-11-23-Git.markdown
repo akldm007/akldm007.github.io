@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "git add与ignore"
 date:   2017-11-23 16:50:13
-categories: [work, Git]
+categories: [Tech]
 permalink: /archivers/7
 ---
 

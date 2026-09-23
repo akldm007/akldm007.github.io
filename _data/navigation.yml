@@ -1,0 +1,9 @@
+main:
+  - title: "Tech"
+    url: /categories/tech/
+  - title: "Life"
+    url: /categories/life/
+  - title: "Investment"
+    url: /categories/invest/
+  - title: "About"
+    url: /about/

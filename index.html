@@ -1,33 +1,5 @@
 ---
-layout: default
+layout: home
+author_profile: true
+paginate: true
 ---
-
-<div class="home">
-  <h1 class="home-title">Writing</h1>
-
-  <ul class="post-list">
-    {% for post in paginator.posts %}
-      <li>
-        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <nav class="pagination">
-    {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
-    {% else %}
-      <span class="disabled">Newer</span>
-    {% endif %}
-    <span class="page-number">{{ paginator.page }} / {{ paginator.total_pages }}</span>
-    {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
-    {% else %}
-      <span class="disabled">Older</span>
-    {% endif %}
-  </nav>
-</div>

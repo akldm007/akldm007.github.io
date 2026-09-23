@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "Django Admin的密码"
 date:   2017-06-29 18:00:13
-categories: [work, Django]
+categories: [Tech]
 permalink: /archivers/4
 ---
 

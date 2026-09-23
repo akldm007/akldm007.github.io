@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "1-Day Life Reset Checklist"
 date:   2025-01-27 17:21:00
-categories: [life]
+categories: [Life]
 tags: [lifestyle, personal, thoughts]
 ---
 

@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "Django Tips"
 date:   2017-06-28 18:07:13
-categories: [work, Django]
+categories: [Tech]
 permalink: /archivers/5
 ---
 

@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "How to build a github page"
 date:   2017-06-28 09:00:13
-categories: [work, Github]
+categories: [Tech]
 permalink: /archivers/2
 ---
 

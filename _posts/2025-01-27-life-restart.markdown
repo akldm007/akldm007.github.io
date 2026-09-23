@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "How To Fix Your Entire Life In 1 Day"
 date:   2025-01-27 16:52:00
-categories: [life]
+categories: [Life]
 tags: [lifestyle, personal, thoughts]
 ---
 

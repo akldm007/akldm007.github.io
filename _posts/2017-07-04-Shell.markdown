@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "Unix 文件解压命令大全"
 date:   2017-07-04 14:40:13
-categories: [work, Shell]
+categories: [Tech]
 permalink: /archivers/6
 ---
 

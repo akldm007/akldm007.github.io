@@ -1,33 +1,76 @@
-# Site settings
-title: SeanLi's Blog
-url: "http://akldm007.github.io"
+# ---------- Site ----------
+title: "SeanLi's Blog"
+name: "SeanLi"
+description: "If it doesn't Challenge you, it doesn't Change you"
+url: "https://akldm007.github.io"
 baseurl: ""
-description: >
-  If it doesn't Challenge you, it doesn't Change you
+repository: "akldm007/akldm007.github.io"
+locale: "en-US"
+words_per_minute: 200
 
-# Your information
-email: sean.li02@sap.com
-author: SeanLi
-avatar: "/pic/jm.jpg"
-profile: A knight
-github_username: akldm007
+# ---------- Theme ----------
+remote_theme: "mmistakes/minimal-mistakes@4.27.1"
+minimal_mistakes_skin: "air"
+search: true
 
-# Build settings
+# ---------- Author (sidebar profile) ----------
+author:
+  name: "SeanLi"
+  avatar: "/pic/jm.jpg"
+  bio: "A knight"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/akldm007"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:sean.li02@sap.com"
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/akldm007"
+
+# ---------- Build ----------
 permalink: /archivers/:title
-plugins:
- - jekyll-paginate
- - jekyll-gist
- - jemoji
-
 paginate: 6
-paginate_path: "page:num"
+paginate_path: /page:num/
+include:
+  - _pages
 
-highlighter: rouge
 markdown: kramdown
-
+highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    block:
-      line_numbers: false
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-gist
+  - jemoji
+
+# ---------- Front-matter defaults ----------
+defaults:
+  # Posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: false
+      related: true
+  # Pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true

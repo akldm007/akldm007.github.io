@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "No passwd git pull"
 date:   2017-06-27 16:31:13
-categories: [work, Github]
+categories: [Tech]
 permalink: /archivers/1
 ---
 
