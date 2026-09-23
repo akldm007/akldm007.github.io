@@ -6,6 +6,7 @@ url: "https://akldm007.github.io"
 baseurl: ""
 repository: "akldm007/akldm007.github.io"
 locale: "en-US"
+timezone: Asia/Shanghai
 words_per_minute: 200
 
 # ---------- Theme ----------

@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "文章标题"
-date:   2026-01-01 12:00:00
+date:   2026-01-01 12:00:00 +0800
 categories: [Life]
 tags: [lifestyle, personal, thoughts]
 toc: true

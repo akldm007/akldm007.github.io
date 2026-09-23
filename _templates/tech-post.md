@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "文章标题"
-date:   2026-01-01 12:00:00
+date:   2026-01-01 12:00:00 +0800
 categories: [Tech]
 tags: [示例标签]
 toc: true          # 侧边目录，长文建议 true，短文可删掉这行
