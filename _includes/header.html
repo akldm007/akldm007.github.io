@@ -1,24 +1,17 @@
-<header class="header">
+<header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-    
+
     <nav class="site-nav">
       <a href="{{ site.baseurl }}/">Home</a>
       <a href="{{ site.baseurl }}/about.html">About</a>
-      
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-        <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
         </svg>
-        <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
@@ -27,63 +20,17 @@
 </header>
 
 <script>
-  // Dark mode toggle functionality
   function toggleTheme() {
-    const body = document.body;
-    const currentTheme = localStorage.getItem('theme');
-    
-    if (currentTheme === 'dark') {
-      body.classList.remove('dark-mode');
+    var root = document.documentElement;
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = root.classList.contains('dark') || (!root.classList.contains('light') && prefersDark);
+    root.classList.remove('dark', 'light');
+    if (isDark) {
+      root.classList.add('light');
       localStorage.setItem('theme', 'light');
     } else {
-      body.classList.add('dark-mode');
+      root.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     }
   }
-  
-  // Check for saved theme preference or default to system preference
-  (function() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      document.body.classList.add('dark-mode');
-    }
-  })();
 </script>
-
-<style>
-  .theme-toggle {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .theme-icon {
-    position: absolute;
-    transition: all 0.3s ease;
-  }
-  
-  .sun-icon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-  
-  .moon-icon {
-    opacity: 0;
-    transform: rotate(90deg) scale(0);
-  }
-  
-  body.dark-mode .sun-icon {
-    opacity: 0;
-    transform: rotate(-90deg) scale(0);
-  }
-  
-  body.dark-mode .moon-icon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-</style>

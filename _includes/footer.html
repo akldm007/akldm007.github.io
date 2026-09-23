@@ -1,10 +1,10 @@
-<footer class="footer">
+<footer class="site-footer">
   <div class="wrapper">
-    <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}. All rights reserved.</p>
-    <p>{{ site.description }}</p>
-    <p>
-      Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> • 
-      Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
-    </p>
+    <span>&copy; {{ site.time | date: '%Y' }} {{ site.author }}</span>
+    <span class="footer-links">
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+      <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
+      <a href="mailto:{{ site.email }}">Email</a>
+    </span>
   </div>
 </footer>

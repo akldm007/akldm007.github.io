@@ -1,17 +1,28 @@
 ---
 layout: default
 ---
-<div class="post">
+<article class="post">
 
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+    <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</p>
   </header>
 
-  <article class="post-content">
+  <div class="post-content">
     {{ content }}
-  </article>
-  
+  </div>
+
+  {% if page.previous.url or page.next.url %}
+  <nav class="post-nav">
+    {% if page.previous.url %}
+      <a class="post-nav-prev" href="{{ page.previous.url | prepend: site.baseurl }}">← {{ page.previous.title }}</a>
+    {% endif %}
+    {% if page.next.url %}
+      <a class="post-nav-next" href="{{ page.next.url | prepend: site.baseurl }}">{{ page.next.title }} →</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+
   {% include comment.html %}
 
-</div>
+</article>
